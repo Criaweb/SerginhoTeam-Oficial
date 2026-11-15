@@ -330,3 +330,73 @@ body {
 .modal-close:hover {
     color: var(--gold-light);
 }
+
+/* ============================================
+   Estilo do Carrossel de Fotos (Musculação)
+   ============================================ */
+
+.carousel-container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    min-height: 280px; /* Garante altura perfeita para exibir o carrossel e o texto lado a lado */
+}
+
+.carousel-track {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.carousel-slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+    display: block;
+}
+
+.carousel-slide.active {
+    opacity: 1;
+}
+
+/* Botões de Avançar e Voltar do Carrossel */
+.carousel-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(18, 18, 20, 0.7);
+    color: var(--gold-light);
+    border: 1px solid var(--gold-base);
+    font-size: 1rem;
+    padding: 8px 12px;
+    cursor: pointer;
+    z-index: 10;
+    transition: 0.3s;
+    border-radius: 4px;
+}
+
+.carousel-btn:hover {
+    background-color: var(--gold-base);
+    color: var(--metal-black);
+}
+
+.prev-btn {
+    left: 8px;
+}
+
+.next-btn {
+    right: 8px;
+}
+
+@media (max-width: 768px) {
+    .service .carousel-container {
+        height: 220px;
+        min-height: auto;
+    }
+}

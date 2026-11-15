@@ -28,10 +28,25 @@
     </header>
 
     <section class="services">
-        <!-- 1. Musculação -->
+        <!-- 1. Musculação com Carrossel de Imagens -->
         <article class="service reveal right">
-            <div class="service-media">
-                <img src="imagens/academia.jpeg" alt="Espaço Musculação Serginho Team" loading="lazy">
+            <div class="service-media carousel-container">
+                <div class="carousel-track">
+                    <img src="imagens/aca1.JPG" alt="Espaço Musculação Serginho Team" class="carousel-slide active" loading="lazy">
+                    <img src="imagens/aca2.JPG" alt="Equipamentos de Musculação" class="carousel-slide" loading="lazy">
+                    <img src="imagens/aca3.JPG" alt="Área de Pesos Livres" class="carousel-slide" loading="lazy">
+                    <img src="imagens/aca4.JPG" alt="Área de Pesos Livres" class="carousel-slide" loading="lazy">
+                    <img src="imagens/aca5.JPG" alt="Área de Pesos Livres" class="carousel-slide" loading="lazy">
+                    <img src="imagens/aca6.JPG" alt="Área de Pesos Livres" class="carousel-slide" loading="lazy">
+                    <img src="imagens/aca7.JPG" alt="Área de Pesos Livres" class="carousel-slide" loading="lazy">
+                    <img src="imagens/aca8.JPG" alt="Área de Pesos Livres" class="carousel-slide" loading="lazy">
+                    <img src="imagens/aca9.JPG" alt="Área de Pesos Livres" class="carousel-slide" loading="lazy">
+                    <img src="imagens/aca10.JPG" alt="Área de Pesos Livres" class="carousel-slide" loading="lazy">
+                    <img src="imagens/aca11.JPG" alt="Área de Pesos Livres" class="carousel-slide" loading="lazy">
+                    <img src="imagens/aca12.JPG" alt="Área de Pesos Livres" class="carousel-slide" loading="lazy">
+                </div>
+                <button class="carousel-btn prev-btn" aria-label="Imagem Anterior">&#10094;</button>
+                <button class="carousel-btn next-btn" aria-label="Próxima Imagem">&#10095;</button>
             </div>
             <div class="service-body">
                 <h2>Musculação & Condicionamento</h2>
@@ -44,7 +59,7 @@
         <!-- 2. Artes Marciais com Destaque -->
         <article class="service service--highlight reveal left">
             <div class="service-media">
-                <img src="imagens/artes-luta.webp" alt="Aulas de Kickboxing e Muay Thai" loading="lazy">
+                <img src="imagens/artes.JPG" alt="Aulas de Kickboxing e Muay Thai" loading="lazy">
                 <div class="highlight-tag">Aula experimental por nossa conta!</div>
             </div>
             <div class="service-body">
@@ -91,7 +106,7 @@
     </footer>
 </main>
 
-<!-- Modal de Ampliação de Imagem (Não altera nada do layout principal) -->
+<!-- Modal de Ampliação de Imagem -->
 <div id="imageModal" class="image-modal">
     <span class="modal-close">&times;</span>
     <img class="modal-content" id="imgExpanded" alt="Imagem Ampliada">
@@ -100,8 +115,9 @@
 <script src="js/Script.js"></script>
 <script src="js/servicos.js"></script>
 
-<!-- Script para abrir/fechar a imagem ampliada ao clicar -->
+<!-- Script do Modal de Imagem e do Carrossel -->
 <script>
+    /* --- Script do Modal de Imagem (Grade / Planos) --- */
     const modal = document.getElementById("imageModal");
     const modalImg = document.getElementById("imgExpanded");
     const clickableImages = document.querySelectorAll(".clickable-img");
@@ -122,6 +138,27 @@
         if (e.target !== modalImg) {
             modal.style.display = "none";
         }
+    });
+
+    /* --- Script do Carrossel de Musculação --- */
+    const slides = document.querySelectorAll('.carousel-slide');
+    const prevBtn = document.querySelector('.prev-btn');
+    const nextBtn = document.querySelector('.next-btn');
+    let currentIndex = 0;
+
+    function showSlide(index) {
+        slides.forEach(slide => slide.classList.remove('active'));
+        slides[index].classList.add('active');
+    }
+
+    nextBtn.addEventListener('click', () => {
+        currentIndex = (currentIndex + 1) % slides.length;
+        showSlide(currentIndex);
+    });
+
+    prevBtn.addEventListener('click', () => {
+        currentIndex = (currentIndex - 1 + slides.length) % slides.length;
+        showSlide(currentIndex);
     });
 </script>
 </body>
